@@ -1,0 +1,32 @@
+notification:
+    resource: "@NotificationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+show_follow:
+    path:     /showfollow
+    defaults: { _controller: NotificationBundle:Following:showfollow }
+
+getbyid_follow:
+    path:     /getbyidfollow/{id}
+    defaults: { _controller: NotificationBundle:Following:getfollowbyid }
+
+getall_follow:
+    path:     /getallfollow
+    defaults: { _controller: NotificationBundle:Following:getAllfollows }
+
+delete_follow:
+    path:     /delete/{id}
+    defaults: { _controller: NotificationBundle:Following:delete }
+
+add_follow:
+    path:     /addfollow
+    defaults: { _controller: NotificationBundle:Following:addfollow }
+
+update_follow:
+    path:     /update/{id}
+    defaults: { _controller: NotificationBundle:Following:updatefollow }
