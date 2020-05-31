@@ -65,21 +65,19 @@ class FollowingController extends Controller
     {
 
 //get content of data sent by ARC(or postman) tools
-        $data = $request->getContent();
-        //deserialize the data
-        dump($follow);
-        // die;
-        $follow = $this->get('jms_serializer')
-            ->deserialize($data, 'NotificationBundle\Entity\Follow', 'json');
-
-        $person =$this->getDoctrine()->getrepository('NotificationBundle:campany')->find(json_decode($data)->idcampany);
-        $follow->setIdcampany($person);
-        //dump($follow);
-       // die;
-
-        // // Get the Doctrine service and manager
-
         $em = $this->getDoctrine()->getManager();
+        $data = $request->getContent();
+
+        // Get the Doctrine service and manager
+
+        $campany = $em->getRepository('NotificationBundle\Entity\campany')->find(json_decode($data)->idcampany);
+        $candidate = $em$ git commit -m "initial commit"->getRepository('NotificationBundle\Entity\Candidat')
+            ->find(json_decode($data)->idcandidat);
+        $follow = new Follow();
+        $follow->setIdcampany($campany);
+        $follow->setIdcandidat($candidate);
+
+
         // Add our Article to Doctrine so that it can be saved
         $em->persist($follow);
         // Save our Article
